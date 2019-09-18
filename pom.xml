@@ -35,6 +35,8 @@
         <module>smart-rest-common</module>
         <module>smart-rest-api</module>
         <module>smart-rest-orm</module>
+        <module>smart-rest-ui</module>
+        <module>smart-rest-service</module>
     </modules>
 
     <build>
