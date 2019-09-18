@@ -31,21 +31,39 @@
     <artifactId>smart-rest</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
+    </properties>
+
     <modules>
         <module>smart-rest-common</module>
         <module>smart-rest-api</module>
-        <module>smart-rest-orm</module>
+        <module>smart-rest-dao</module>
         <module>smart-rest-ui</module>
         <module>smart-rest-service</module>
         <module>smart-rest-executable</module>
     </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.7.RELEASE</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.17</version>
+                <version>${maven-checkstyle-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>validate</id>
@@ -66,5 +84,25 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+                <server.port>8808</server.port>
+                <context.path>/</context.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>mysql</id>
+            <properties>
+                <spring.datasource.url>jdbc:mysql://localhost:3306/test_api</spring.datasource.url>
+                <spring.datasource.username>root</spring.datasource.username>
+                <spring.datasource.password></spring.datasource.password>
+                <spring.datasource.driver-class-name>com.mysql.jdbc.Driver</spring.datasource.driver-class-name>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
