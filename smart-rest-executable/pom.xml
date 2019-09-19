@@ -11,6 +11,14 @@
 
     <artifactId>smart-rest-executable</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.azureyjt</groupId>
+            <artifactId>smart-rest-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
