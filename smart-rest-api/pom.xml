@@ -11,5 +11,12 @@
 
     <artifactId>smart-rest-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.azureyjt</groupId>
+            <artifactId>smart-rest-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

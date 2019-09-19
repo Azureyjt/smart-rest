@@ -23,9 +23,13 @@
 
 package com.azureyjt.smartrest.controller;
 
+import com.azureyjt.smartrest.service.CommonRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Entry point of all the user-defined REST API.
@@ -34,29 +38,75 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CommonRestController {
 
+    private final CommonRestService commonRestService;
+
+    /**
+     * Contructor of CommonRestController.
+     *
+     * @param commonRestService CommonRestService Spring bean.
+     */
     @Autowired
-    public CommonRestController() {
-
+    public CommonRestController(CommonRestService commonRestService) {
+        this.commonRestService = commonRestService;
     }
 
+    /**
+     * Filter GET request.
+     *
+     * @param request HttpServletRequest.
+     * @param response HttpServletResponse
+     * @return Response data in JSON format.
+     */
     @GetMapping(path = "")
-    public String getRequest() {
-        return "get";
+    public String getRequest(HttpServletRequest request,
+                             HttpServletResponse response) {
+        String responseData = commonRestService.executeGet(request.getRequestURI());
+        return responseData;
     }
 
+    /**
+     * Filter POST request.
+     *
+     * @param request HttpServletRequest.
+     * @param response HttpServletResponse.
+     * @param body Request body data.
+     * @return Response data in JSON format.
+     */
     @PostMapping(path = "")
-    public String postRequest() {
-        return "post";
+    public String postRequest(HttpServletRequest request,
+                              HttpServletResponse response,
+                              @RequestBody String body) {
+        String responseData = commonRestService.executePost(request.getRequestURI(), body);
+        return responseData;
     }
 
+    /**
+     * Filter PUT request.
+     *
+     * @param request HttpServletRequest.
+     * @param response HttpServletResponse.
+     * @param body Request body data.
+     * @return Response data in JSON format.
+     */
     @PutMapping(path = "")
-    public String putRequest() {
-        return "put";
+    public String putRequest(HttpServletRequest request,
+                             HttpServletResponse response,
+                             @RequestBody String body) {
+        String responseData = commonRestService.executePut(request.getRequestURI(), body);
+        return responseData;
     }
 
+    /**
+     * Filter DELETE request.
+     * @param request HttpServletRequest.
+     * @param response HttpServletResponse.
+     * @return Response data in JSON format.
+     */
     @DeleteMapping(path = "")
-    public String deleteRequest() {
-        return "delete";
+    public String deleteRequest(HttpServletRequest request,
+                                HttpServletResponse response) {
+        String responseData = commonRestService.executeDelete(request.getRequestURI());
+        return responseData;
     }
 
 }

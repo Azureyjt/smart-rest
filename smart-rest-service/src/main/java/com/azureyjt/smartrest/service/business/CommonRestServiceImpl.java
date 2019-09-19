@@ -48,7 +48,7 @@ public class CommonRestServiceImpl implements CommonRestService {
      * Execute GET request.
      *
      * @param url Request url.
-     * @return Reponse body data.
+     * @return Response body data.
      */
     @Override
     public String executeGet(String url) {
@@ -60,7 +60,7 @@ public class CommonRestServiceImpl implements CommonRestService {
      *
      * @param url  Request url.
      * @param body Request body.
-     * @return Reponse body data.
+     * @return Response body data.
      */
     @Override
     public String executePost(String url, String body) {
@@ -72,7 +72,7 @@ public class CommonRestServiceImpl implements CommonRestService {
      *
      * @param url  Request url.
      * @param body Request body.
-     * @return Reponse body data.
+     * @return Response body data.
      */
     @Override
     public String executePut(String url, String body) {
@@ -83,7 +83,7 @@ public class CommonRestServiceImpl implements CommonRestService {
      * Execute DELETE request.
      *
      * @param url Request url.
-     * @return Reponse body data.
+     * @return Response body data.
      */
     @Override
     public String executeDelete(String url) {

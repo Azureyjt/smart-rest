@@ -32,7 +32,7 @@ public interface CommonRestService {
      * Execute GET request.
      *
      * @param url Request url.
-     * @return Reponse body data.
+     * @return Response body data.
      */
     String executeGet(String url);
 
@@ -41,7 +41,7 @@ public interface CommonRestService {
      *
      * @param url  Request url.
      * @param body Request body.
-     * @return Reponse body data.
+     * @return Response body data.
      */
     String executePost(String url, String body);
 
@@ -50,7 +50,7 @@ public interface CommonRestService {
      *
      * @param url  Request url.
      * @param body Request body.
-     * @return Reponse body data.
+     * @return Response body data.
      */
     String executePut(String url, String body);
 
@@ -58,7 +58,7 @@ public interface CommonRestService {
      * Execute DELETE request.
      *
      * @param url Request url.
-     * @return Reponse body data.
+     * @return Response body data.
      */
     String executeDelete(String url);
 
