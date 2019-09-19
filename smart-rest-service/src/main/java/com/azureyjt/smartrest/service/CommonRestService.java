@@ -28,4 +28,38 @@ package com.azureyjt.smartrest.service;
  */
 public interface CommonRestService {
 
+    /**
+     * Execute GET request.
+     *
+     * @param url Request url.
+     * @return Reponse body data.
+     */
+    String executeGet(String url);
+
+    /**
+     * Execute POST request.
+     *
+     * @param url  Request url.
+     * @param body Request body.
+     * @return Reponse body data.
+     */
+    String executePost(String url, String body);
+
+    /**
+     * Execute PUT request.
+     *
+     * @param url  Request url.
+     * @param body Request body.
+     * @return Reponse body data.
+     */
+    String executePut(String url, String body);
+
+    /**
+     * Execute DELETE request.
+     *
+     * @param url Request url.
+     * @return Reponse body data.
+     */
+    String executeDelete(String url);
+
 }

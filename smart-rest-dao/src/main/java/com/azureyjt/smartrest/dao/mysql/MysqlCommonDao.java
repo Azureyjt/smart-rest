@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Mysql common dao class.
+ * Mysql common model class.
  */
 @Repository
 public class MysqlCommonDao implements CommonDao {

@@ -44,4 +44,50 @@ public class CommonRestServiceImpl implements CommonRestService {
         this.commonDao = commonDao;
     }
 
+    /**
+     * Execute GET request.
+     *
+     * @param url Request url.
+     * @return Reponse body data.
+     */
+    @Override
+    public String executeGet(String url) {
+        return null;
+    }
+
+    /**
+     * Execute POST request.
+     *
+     * @param url  Request url.
+     * @param body Request body.
+     * @return Reponse body data.
+     */
+    @Override
+    public String executePost(String url, String body) {
+        return null;
+    }
+
+    /**
+     * Execute PUT request.
+     *
+     * @param url  Request url.
+     * @param body Request body.
+     * @return Reponse body data.
+     */
+    @Override
+    public String executePut(String url, String body) {
+        return null;
+    }
+
+    /**
+     * Execute DELETE request.
+     *
+     * @param url Request url.
+     * @return Reponse body data.
+     */
+    @Override
+    public String executeDelete(String url) {
+        return null;
+    }
+
 }

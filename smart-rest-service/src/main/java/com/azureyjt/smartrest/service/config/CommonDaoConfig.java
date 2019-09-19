@@ -23,7 +23,7 @@
 
 package com.azureyjt.smartrest.service.config;
 
-import com.azureyjt.smartrest.common.dao.DatabaseType;
+import com.azureyjt.smartrest.common.model.DatabaseType;
 import com.azureyjt.smartrest.dao.CommonDao;
 import com.azureyjt.smartrest.dao.mysql.MysqlCommonDao;
 import org.springframework.beans.factory.annotation.Value;

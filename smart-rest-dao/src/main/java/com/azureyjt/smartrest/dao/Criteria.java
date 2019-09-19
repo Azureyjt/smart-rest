@@ -29,6 +29,5 @@ package com.azureyjt.smartrest.dao;
  */
 public interface Criteria {
 
-
     
 }

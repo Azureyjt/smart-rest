@@ -24,7 +24,7 @@
 /**
  * Supported database type enum.
  */
-package com.azureyjt.smartrest.common.dao;
+package com.azureyjt.smartrest.common.model;
 
 public enum DatabaseType {
 
