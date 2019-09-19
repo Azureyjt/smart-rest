@@ -38,7 +38,7 @@ public interface CommonDao {
      * Get all records.
      *
      * @return List of the record data. each entity in the list is a map which stored a
-     * tuple of data. Key is the column name and value is the column value.
+     *      tuple of data. Key is the column name and value is the column value.
      */
     List<Map<String, Object>> getAll();
 
@@ -47,7 +47,7 @@ public interface CommonDao {
      *
      * @param id ID of the required record.
      * @return Record data. The data is stored in a map. Key is the column name and value
-     * is the column value.
+     *     is the column value.
      */
     Map<String, Object> getById(Object id);
 

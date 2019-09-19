@@ -58,7 +58,7 @@ public class MysqlCommonDao implements CommonDao {
      * Get all records.
      *
      * @return List of the record data. each entity in the list is a map which stored a
-     * tuple of data. Key is the column name and value is the column value.
+     *     tuple of data. Key is the column name and value is the column value.
      */
     @Override
     public List<Map<String, Object>> getAll() {
@@ -72,9 +72,8 @@ public class MysqlCommonDao implements CommonDao {
      *
      * @param id ID of the required record.
      * @return Record data. The data is stored in a map. Key is the column name and value
-     * is the column value.
+     *     is the column value.
      */
-    @Override
     public Map<String, Object> getById(Object id) {
         String sql = MysqlQueryGenerator.getRecordByIdQuery(
                 this.tableName,
@@ -96,7 +95,7 @@ public class MysqlCommonDao implements CommonDao {
     /**
      * Set specified table name in Mysql DB instance.
      *
-     * @param tableName
+     * @param tableName Table name.
      */
     public void setTableName(String tableName) {
         this.tableName = tableName;

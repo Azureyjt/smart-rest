@@ -11,5 +11,12 @@
 
     <artifactId>smart-rest-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.azureyjt</groupId>
+            <artifactId>smart-rest-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
