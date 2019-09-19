@@ -21,14 +21,18 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.dao;
-
 /**
- * Criteria enables to compose criterion object, which is used to defined conditions
- * in database query.
+ * Supported database type enum.
  */
-public interface Criteria {
+package com.azureyjt.smartrest.common.dao;
 
+public enum DatabaseType {
 
-    
+    MYSQL("mysql");
+
+    private String name;
+
+    private DatabaseType(String name) {
+        this.name = name;
+    }
 }

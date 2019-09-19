@@ -21,14 +21,27 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.dao;
+package com.azureyjt.smartrest.service.config;
+
+import com.azureyjt.smartrest.dao.CommonDao;
+import com.azureyjt.smartrest.service.business.CommonRestServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * Criteria enables to compose criterion object, which is used to defined conditions
- * in database query.
+ * Generate Spring bean for CommonRestServiceImpl
  */
-public interface Criteria {
+@Configuration
+public class CommonRestServiceConfig {
 
-
-    
+    /**
+     * Generate CommonRestServiceImpl bean.
+     *
+     * @param commonDao CommonDao bean. Injected by Spring Java Config.
+     * @return CommonRestServiceImpl Spring bean.
+     */
+    @Bean
+    public CommonRestServiceImpl createCommonRestService(CommonDao commonDao) {
+        return new CommonRestServiceImpl(commonDao);
+    }
 }

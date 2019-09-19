@@ -21,14 +21,11 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.dao;
+package com.azureyjt.smartrest.service;
 
 /**
- * Criteria enables to compose criterion object, which is used to defined conditions
- * in database query.
+ * Interface of common REST API service.
  */
-public interface Criteria {
+public interface CommonRestService {
 
-
-    
 }

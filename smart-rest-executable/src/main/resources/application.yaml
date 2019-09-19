@@ -9,3 +9,6 @@ spring:
     username: "@spring.datasource.username@"
     password: "@spring.datasource.password@"
     driver-class-name: "@spring.datasource.driver-class-name@"
+
+database:
+  type: "@database.type@"
