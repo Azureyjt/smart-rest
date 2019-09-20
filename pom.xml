@@ -43,6 +43,7 @@
         <module>smart-rest-ui</module>
         <module>smart-rest-service</module>
         <module>smart-rest-executable</module>
+        <module>smart-rest-aop</module>
     </modules>
 
     <parent>

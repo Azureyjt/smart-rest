@@ -26,7 +26,6 @@ package com.azureyjt.smartrest.dao.mysql;
 import com.azureyjt.smartrest.dao.CommonDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,6 @@ import java.util.Map;
 /**
  * Mysql common model class.
  */
-@Repository
 public class MysqlCommonDao implements CommonDao {
 
     private final JdbcTemplate jdbcTemplate;

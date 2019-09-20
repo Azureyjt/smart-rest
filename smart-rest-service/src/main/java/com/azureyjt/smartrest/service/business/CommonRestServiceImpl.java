@@ -52,7 +52,7 @@ public class CommonRestServiceImpl implements CommonRestService {
      */
     @Override
     public String executeGet(String url) {
-        return null;
+        return "test";
     }
 
     /**

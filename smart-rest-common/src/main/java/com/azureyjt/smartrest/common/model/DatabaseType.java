@@ -21,11 +21,11 @@
  * THE SOFTWARE.
  */
 
+package com.azureyjt.smartrest.common.model;
+
 /**
  * Supported database type enum.
  */
-package com.azureyjt.smartrest.common.model;
-
 public enum DatabaseType {
 
     MYSQL("mysql");
