@@ -29,7 +29,7 @@ import java.util.Objects;
 /**
  * Data model of the customized REST API.
  */
-public class CustomizedApiConfig {
+public class ApiConfig {
 
     private String apiUri;
 
@@ -40,15 +40,15 @@ public class CustomizedApiConfig {
     private Map<String, String> attributeMapping;
 
     /**
-     * Constructor of CustomizedApiConfig.
+     * Constructor of ApiConfig.
      */
-    public CustomizedApiConfig() {
+    public ApiConfig() {
     }
 
     /**
-     * Constructor of CustomizedApiConfig with fields.
+     * Constructor of ApiConfig with fields.
      */
-    public CustomizedApiConfig(
+    public ApiConfig(
             String apiUri,
             String tableName,
             String idColumnName,
@@ -73,7 +73,7 @@ public class CustomizedApiConfig {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CustomizedApiConfig that = (CustomizedApiConfig) o;
+        ApiConfig that = (ApiConfig) o;
         return Objects.equals(apiUri, that.apiUri)
                 && Objects.equals(tableName, that.tableName)
                 && Objects.equals(idColumnName, that.idColumnName)

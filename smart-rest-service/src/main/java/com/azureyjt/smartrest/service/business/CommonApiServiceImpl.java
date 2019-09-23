@@ -23,7 +23,7 @@
 
 package com.azureyjt.smartrest.service.business;
 
-import com.azureyjt.smartrest.common.model.CustomizedApiConfig;
+import com.azureyjt.smartrest.common.model.ApiConfig;
 import com.azureyjt.smartrest.common.utility.JsonUtils;
 import com.azureyjt.smartrest.common.utility.UrlUtils;
 import com.azureyjt.smartrest.dao.CommonDao;
@@ -115,7 +115,7 @@ public class CommonApiServiceImpl implements CommonApiService {
      * @return Response body data.
      */
     private String executeGetAll(String uri) throws NoSuchResourceException {
-        CustomizedApiConfig apiConfig = getApiConfig(uri);
+        ApiConfig apiConfig = getApiConfig(uri);
         if (apiConfig == null) {
             throw new NoSuchResourceException();
         }
@@ -132,7 +132,7 @@ public class CommonApiServiceImpl implements CommonApiService {
      * @return Response body data.
      */
     private String executeGetById(String uri) throws NoSuchResourceException {
-        CustomizedApiConfig apiConfig = getApiConfig(uri);
+        ApiConfig apiConfig = getApiConfig(uri);
         if (apiConfig == null) {
             throw new NoSuchResourceException();
         }
@@ -147,12 +147,12 @@ public class CommonApiServiceImpl implements CommonApiService {
      * Get pre-configured api setting from cache.
      *
      * @param uri Request uri.
-     * @return CustomizedApiConfig.
+     * @return ApiConfig.
      */
-    private CustomizedApiConfig getApiConfig(String uri) {
+    private ApiConfig getApiConfig(String uri) {
         Cache cache = cacheManager.getCache(cacheProperties.getApiMapName());
         String baseUri = UrlUtils.getBaseUri(uri);
-        CustomizedApiConfig apiConfig = (CustomizedApiConfig) cache.get(baseUri);
+        ApiConfig apiConfig = (ApiConfig) cache.get(baseUri);
         return apiConfig;
     }
 }
