@@ -21,47 +21,36 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.service;
+package com.azureyjt.smartrest.service.config;
 
-import com.azureyjt.smartrest.service.exception.NoSuchResourceException;
+import com.azureyjt.smartrest.dao.CommonDao;
+import com.azureyjt.smartrest.service.business.CommonApiServiceImpl;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.CacheManager;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * Interface of common REST API service.
+ * Generate Spring bean for CommonApiServiceImpl
  */
-public interface CommonRestService {
+@Configuration
+@EnableConfigurationProperties(CacheProperties.class)
+public class CommonApiServiceConfig {
 
     /**
-     * Execute GET request.
+     * Generate CommonApiServiceImpl bean.
      *
-     * @param uri Request uri.
-     * @return Response body data.
+     * @param commonDao CommonDao bean. Injected by Spring Java Config.
+     * @return CommonApiServiceImpl Spring bean.
      */
-    String executeGet(String uri) throws NoSuchResourceException;
-
-    /**
-     * Execute POST request.
-     *
-     * @param uri  Request uri.
-     * @param body Request body.
-     * @return Response body data.
-     */
-    String executePost(String uri, String body);
-
-    /**
-     * Execute PUT request.
-     *
-     * @param uri  Request uri.
-     * @param body Request body.
-     * @return Response body data.
-     */
-    String executePut(String uri, String body);
-
-    /**
-     * Execute DELETE request.
-     *
-     * @param uri Request uri.
-     * @return Response body data.
-     */
-    String executeDelete(String uri);
-
+    @Bean
+    public CommonApiServiceImpl createCommonRestService(
+            final CommonDao commonDao,
+            final CacheManager cacheManager,
+            final CacheProperties cacheProperties) {
+        return new CommonApiServiceImpl(
+                commonDao,
+                cacheManager,
+                cacheProperties);
+    }
 }

@@ -23,7 +23,7 @@
 
 package com.azureyjt.smartrest.controller;
 
-import com.azureyjt.smartrest.service.CommonRestService;
+import com.azureyjt.smartrest.service.CommonApiService;
 import com.azureyjt.smartrest.service.exception.NoSuchResourceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,17 +38,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
-public class CommonRestController {
+public class CommonApiController {
 
-    private final CommonRestService commonRestService;
+    private final CommonApiService commonRestService;
 
     /**
-     * Contructor of CommonRestController.
+     * Contructor of CommonApiController.
      *
-     * @param commonRestService CommonRestService Spring bean.
+     * @param commonRestService CommonApiService Spring bean.
      */
     @Autowired
-    public CommonRestController(CommonRestService commonRestService) {
+    public CommonApiController(CommonApiService commonRestService) {
         this.commonRestService = commonRestService;
     }
 

@@ -21,36 +21,47 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.service.config;
+package com.azureyjt.smartrest.service;
 
-import com.azureyjt.smartrest.dao.CommonDao;
-import com.azureyjt.smartrest.service.business.CommonRestServiceImpl;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cache.CacheManager;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.azureyjt.smartrest.service.exception.NoSuchResourceException;
 
 /**
- * Generate Spring bean for CommonRestServiceImpl
+ * Interface of common REST API service.
  */
-@Configuration
-@EnableConfigurationProperties(CacheProperties.class)
-public class CommonRestServiceConfig {
+public interface CommonApiService {
 
     /**
-     * Generate CommonRestServiceImpl bean.
+     * Execute GET request.
      *
-     * @param commonDao CommonDao bean. Injected by Spring Java Config.
-     * @return CommonRestServiceImpl Spring bean.
+     * @param uri Request uri.
+     * @return Response body data.
      */
-    @Bean
-    public CommonRestServiceImpl createCommonRestService(
-            final CommonDao commonDao,
-            final CacheManager cacheManager,
-            final CacheProperties cacheProperties) {
-        return new CommonRestServiceImpl(
-                commonDao,
-                cacheManager,
-                cacheProperties);
-    }
+    String executeGet(String uri) throws NoSuchResourceException;
+
+    /**
+     * Execute POST request.
+     *
+     * @param uri  Request uri.
+     * @param body Request body.
+     * @return Response body data.
+     */
+    String executePost(String uri, String body);
+
+    /**
+     * Execute PUT request.
+     *
+     * @param uri  Request uri.
+     * @param body Request body.
+     * @return Response body data.
+     */
+    String executePut(String uri, String body);
+
+    /**
+     * Execute DELETE request.
+     *
+     * @param uri Request uri.
+     * @return Response body data.
+     */
+    String executeDelete(String uri);
+
 }
