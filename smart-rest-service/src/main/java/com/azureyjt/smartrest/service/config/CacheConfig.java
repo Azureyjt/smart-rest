@@ -21,42 +21,31 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.dao;
+package com.azureyjt.smartrest.service.config;
 
-import java.util.List;
-import java.util.Map;
+
+import com.hazelcast.core.Hazelcast;
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.spring.cache.HazelcastCacheManager;
+import org.springframework.cache.CacheManager;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * CommonDao defines basic CRUD opertaions that should be support in different database
- * products. It does not use generic programming to link the data to defined data model.
- * Instead of that the results of queries are stored in HashMap and then filtered by the
- * rules defined by pre-generated REST API.
+ * Generate cache-related Spring bean.
  */
-public interface CommonDao {
+@Configuration
+public class CacheConfig {
 
     /**
-     * Get all records.
+     * Generate CacheManager Spring bean.
      *
-     * @return List of the record data. each entity in the list is a map which stored a
-     *     tuple of data. Key is the column name and value is the column value.
+     * @return CacheManager instance.
      */
-    List<Map<String, Object>> getAll();
-
-    /**
-     * Get the record with specified id.
-     *
-     * @param id ID of the required record.
-     * @return Record data. The data is stored in a map. Key is the column name and value
-     *     is the column value.
-     */
-    Map<String, Object> getById(Object id);
-
-    /**
-     * Init DB schema information.
-     *
-     * @param tableName Name of table from which commonDao fetch data.
-     * @param idColumnName Name of id column of the certain table.
-     */
-    void initDbSchema(String tableName, String idColumnName);
+    @Bean
+    public CacheManager createCacheManager() {
+        HazelcastInstance instance = Hazelcast.newHazelcastInstance();
+        return new HazelcastCacheManager(instance);
+    }
 
 }

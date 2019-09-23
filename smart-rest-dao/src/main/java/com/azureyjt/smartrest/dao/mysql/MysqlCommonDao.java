@@ -52,6 +52,12 @@ public class MysqlCommonDao implements CommonDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
+    public void initDbSchema(String tableName, String idColumnName) {
+        this.tableName = tableName;
+        this.idColumnName = idColumnName;
+    }
+
     /**
      * Get all records.
      *
@@ -72,6 +78,7 @@ public class MysqlCommonDao implements CommonDao {
      * @return Record data. The data is stored in a map. Key is the column name and value
      *     is the column value.
      */
+    @Override
     public Map<String, Object> getById(Object id) {
         String sql = MysqlQueryGenerator.getRecordByIdQuery(
                 this.tableName,

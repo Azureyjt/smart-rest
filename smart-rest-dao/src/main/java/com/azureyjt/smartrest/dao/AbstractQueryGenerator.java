@@ -29,6 +29,4 @@ package com.azureyjt.smartrest.dao;
  */
 public abstract class AbstractQueryGenerator {
 
-
-
 }

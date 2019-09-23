@@ -23,34 +23,25 @@
 
 package com.azureyjt.smartrest.service.config;
 
-import com.azureyjt.smartrest.dao.CommonDao;
-import com.azureyjt.smartrest.service.business.CommonRestServiceImpl;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cache.CacheManager;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Generate Spring bean for CommonRestServiceImpl
+ * Load cache-related properties.
  */
-@Configuration
-@EnableConfigurationProperties(CacheProperties.class)
-public class CommonRestServiceConfig {
+@ConfigurationProperties
+public class CacheProperties {
 
-    /**
-     * Generate CommonRestServiceImpl bean.
-     *
-     * @param commonDao CommonDao bean. Injected by Spring Java Config.
-     * @return CommonRestServiceImpl Spring bean.
-     */
-    @Bean
-    public CommonRestServiceImpl createCommonRestService(
-            final CommonDao commonDao,
-            final CacheManager cacheManager,
-            final CacheProperties cacheProperties) {
-        return new CommonRestServiceImpl(
-                commonDao,
-                cacheManager,
-                cacheProperties);
+    @Value("${cache.map.api.name}")
+    private String apiMapName;
+
+    public CacheProperties() {}
+
+    public String getApiMapName() {
+        return apiMapName;
+    }
+
+    public void setApiMapName(String apiMapName) {
+        this.apiMapName = apiMapName;
     }
 }

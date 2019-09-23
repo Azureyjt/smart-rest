@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>smart-rest-service</artifactId>
+    <artifactId>smart-rest-cache</artifactId>
 
     <properties>
         <hazelcast-all.version>3.12.2</hazelcast-all.version>
@@ -17,21 +17,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.azureyjt</groupId>
-            <artifactId>smart-rest-dao</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.azureyjt</groupId>
-            <artifactId>smart-rest-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-all</artifactId>
             <version>${hazelcast-all.version}</version>
         </dependency>
 
     </dependencies>
+
 
 </project>

@@ -24,40 +24,30 @@
 package com.azureyjt.smartrest.service.config;
 
 import com.azureyjt.smartrest.common.model.DatabaseType;
-import com.azureyjt.smartrest.dao.CommonDao;
-import com.azureyjt.smartrest.dao.mysql.MysqlCommonDao;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Create CommonDao bean according to configuration file.
+ * Load database configuration properties.
  */
-@Configuration
-@EnableConfigurationProperties(DatabaseProperties.class)
-public class CommonDaoConfig {
+@ConfigurationProperties
+public class DatabaseProperties {
 
-    /**
-     * Generate CommonDao Spring bean according to the configured database type.
-     *
-     * @param jdbcTemplate JdbcTemplate Spring bean.
-     * @return CommonDao bean.
-     */
-    @Bean
-    public CommonDao createCommonDao(
-            final JdbcTemplate jdbcTemplate,
-            final DatabaseProperties databaseProperties) {
-        CommonDao commonDao = null;
-        DatabaseType databaseType = databaseProperties.getType();
-        switch (databaseType) {
-            case MYSQL:
-                commonDao = new MysqlCommonDao(jdbcTemplate);
-                break;
-            default:
-                // TODO: Define the workflow when ${database.type} is not configured correctly.
-                break;
-        }
-        return commonDao;
+    @Value("${database.type}")
+    private DatabaseType type;
+
+    public DatabaseProperties() {
+    }
+
+    public DatabaseProperties(DatabaseType type) {
+        this.type = type;
+    }
+
+    public DatabaseType getType() {
+        return type;
+    }
+
+    public void setType(DatabaseType type) {
+        this.type = type;
     }
 }

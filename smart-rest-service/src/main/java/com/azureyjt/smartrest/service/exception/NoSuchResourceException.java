@@ -21,36 +21,13 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.service.config;
-
-import com.azureyjt.smartrest.dao.CommonDao;
-import com.azureyjt.smartrest.service.business.CommonRestServiceImpl;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cache.CacheManager;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+package com.azureyjt.smartrest.service.exception;
 
 /**
- * Generate Spring bean for CommonRestServiceImpl
+ * This Exception is thrown when no defined api matches request uri.
  */
-@Configuration
-@EnableConfigurationProperties(CacheProperties.class)
-public class CommonRestServiceConfig {
+public class NoSuchResourceException extends Exception {
 
-    /**
-     * Generate CommonRestServiceImpl bean.
-     *
-     * @param commonDao CommonDao bean. Injected by Spring Java Config.
-     * @return CommonRestServiceImpl Spring bean.
-     */
-    @Bean
-    public CommonRestServiceImpl createCommonRestService(
-            final CommonDao commonDao,
-            final CacheManager cacheManager,
-            final CacheProperties cacheProperties) {
-        return new CommonRestServiceImpl(
-                commonDao,
-                cacheManager,
-                cacheProperties);
-    }
+    public NoSuchResourceException() {}
+
 }

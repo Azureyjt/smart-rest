@@ -24,7 +24,9 @@
 package com.azureyjt.smartrest.controller;
 
 import com.azureyjt.smartrest.service.CommonRestService;
+import com.azureyjt.smartrest.service.exception.NoSuchResourceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,10 +59,15 @@ public class CommonRestController {
      * @param response HttpServletResponse
      * @return Response data in JSON format.
      */
-    @GetMapping(path = "")
+    @GetMapping(path = "*")
     public String getRequest(HttpServletRequest request,
                              HttpServletResponse response) {
-        String responseData = commonRestService.executeGet(request.getRequestURI());
+        String responseData = null;
+        try {
+            responseData = commonRestService.executeGet(request.getRequestURI());
+        } catch (NoSuchResourceException e) {
+            response.setStatus(HttpStatus.NOT_FOUND.value());
+        }
         return responseData;
     }
 
@@ -72,7 +79,7 @@ public class CommonRestController {
      * @param body Request body data.
      * @return Response data in JSON format.
      */
-    @PostMapping(path = "")
+    @PostMapping(path = "*")
     public String postRequest(HttpServletRequest request,
                               HttpServletResponse response,
                               @RequestBody String body) {
@@ -88,7 +95,7 @@ public class CommonRestController {
      * @param body Request body data.
      * @return Response data in JSON format.
      */
-    @PutMapping(path = "")
+    @PutMapping(path = "*")
     public String putRequest(HttpServletRequest request,
                              HttpServletResponse response,
                              @RequestBody String body) {
@@ -102,7 +109,7 @@ public class CommonRestController {
      * @param response HttpServletResponse.
      * @return Response data in JSON format.
      */
-    @DeleteMapping(path = "")
+    @DeleteMapping(path = "*")
     public String deleteRequest(HttpServletRequest request,
                                 HttpServletResponse response) {
         String responseData = commonRestService.executeDelete(request.getRequestURI());

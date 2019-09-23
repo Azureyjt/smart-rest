@@ -44,6 +44,7 @@
         <module>smart-rest-service</module>
         <module>smart-rest-executable</module>
         <module>smart-rest-aop</module>
+        <module>smart-rest-cache</module>
     </modules>
 
     <parent>
@@ -87,14 +88,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <spring.profiles.active>dev</spring.profiles.active>
-                <server.port>8808</server.port>
-                <context.path>/</context.path>
-            </properties>
-        </profile>
         <profile>
             <id>mysql</id>
             <properties>

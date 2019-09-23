@@ -23,6 +23,8 @@
 
 package com.azureyjt.smartrest.service;
 
+import com.azureyjt.smartrest.service.exception.NoSuchResourceException;
+
 /**
  * Interface of common REST API service.
  */
@@ -31,35 +33,35 @@ public interface CommonRestService {
     /**
      * Execute GET request.
      *
-     * @param url Request url.
+     * @param uri Request uri.
      * @return Response body data.
      */
-    String executeGet(String url);
+    String executeGet(String uri) throws NoSuchResourceException;
 
     /**
      * Execute POST request.
      *
-     * @param url  Request url.
+     * @param uri  Request uri.
      * @param body Request body.
      * @return Response body data.
      */
-    String executePost(String url, String body);
+    String executePost(String uri, String body);
 
     /**
      * Execute PUT request.
      *
-     * @param url  Request url.
+     * @param uri  Request uri.
      * @param body Request body.
      * @return Response body data.
      */
-    String executePut(String url, String body);
+    String executePut(String uri, String body);
 
     /**
      * Execute DELETE request.
      *
-     * @param url Request url.
+     * @param uri Request uri.
      * @return Response body data.
      */
-    String executeDelete(String url);
+    String executeDelete(String uri);
 
 }

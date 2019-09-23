@@ -1,0 +1,22 @@
+hazelcast:
+  management-center:
+    enabled: true
+    url: http://localhost:8080/hazelcast-mancenter
+  network:
+    port:
+      auto-increment: true
+      port-count: 100
+      port: 5701
+    outbound-ports:
+      - 0
+    join:
+      multicast:
+        enabled: false
+      tcp-ip:
+        enabled: true
+        interface: 127.0.0.1
+        member-list:
+          - 127.0.0.1
+  map:
+    api:
+      time-to-live-seconds: 0

@@ -1,7 +1,7 @@
 server:
-  port: "@server.port@"
+  port: 8088
   servlet:
-    contextPath: "@context.path@"
+    contextPath: /
 
 spring:
   datasource:
@@ -12,3 +12,8 @@ spring:
 
 database:
   type: "@database.type@"
+
+cache:
+  map:
+    api:
+      name: api
