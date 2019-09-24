@@ -69,7 +69,7 @@ public class CommonApiServiceImpl implements CommonApiService {
      * @return Response body data.
      */
     @Override
-    public String executeGet(String uri) throws NoSuchResourceException {
+    public Object executeGet(String uri) throws NoSuchResourceException {
         return UrlUtils.isBaseUri(uri) ? executeGetAll(uri) : executeGetById(uri);
     }
 
@@ -114,15 +114,14 @@ public class CommonApiServiceImpl implements CommonApiService {
      * @param uri Request uri.
      * @return Response body data.
      */
-    private String executeGetAll(String uri) throws NoSuchResourceException {
+    private List<Map<String, Object>> executeGetAll(String uri) throws NoSuchResourceException {
         ApiConfig apiConfig = getApiConfig(uri);
         if (apiConfig == null) {
             throw new NoSuchResourceException();
         }
         commonDao.initDbSchema(apiConfig.getTableName(), apiConfig.getIdColumnName());
         List<Map<String, Object>> queryResult = commonDao.getAll();
-        String responseData = JsonUtils.toJson(queryResult);
-        return responseData;
+        return queryResult;
     }
 
     /**
@@ -131,16 +130,15 @@ public class CommonApiServiceImpl implements CommonApiService {
      * @param uri Request uri.
      * @return Response body data.
      */
-    private String executeGetById(String uri) throws NoSuchResourceException {
+    private Map<String, Object> executeGetById(String uri) throws NoSuchResourceException {
         ApiConfig apiConfig = getApiConfig(uri);
         if (apiConfig == null) {
             throw new NoSuchResourceException();
         }
         commonDao.initDbSchema(apiConfig.getTableName(), apiConfig.getIdColumnName());
         String id = UrlUtils.getIdentity(uri);
-        Map<String, Object> qureyResult = commonDao.getById(id);
-        String responseData = JsonUtils.toJson(qureyResult);
-        return responseData;
+        Map<String, Object> queryResult = commonDao.getById(id);
+        return queryResult;
     }
 
     /**

@@ -28,6 +28,8 @@ package com.azureyjt.smartrest.service.exception;
  */
 public class NoSuchResourceException extends Exception {
 
-    public NoSuchResourceException() {}
+    public NoSuchResourceException() {
+        super(ExceptionMessage.NO_SUCH_RESOURCE.getMessage());
+    }
 
 }

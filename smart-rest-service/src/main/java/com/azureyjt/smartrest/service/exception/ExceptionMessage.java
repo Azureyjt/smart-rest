@@ -21,10 +21,26 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.common.model;
+package com.azureyjt.smartrest.service.exception;
 
 /**
- * ApiConfigResponse
+ * Define exception message.
  */
-public class ApiConfigResponse {
+public enum ExceptionMessage {
+
+    NO_SUCH_RESOURCE("No such resource defined !");
+
+    private String message;
+
+    ExceptionMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

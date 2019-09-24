@@ -23,18 +23,9 @@
 
 package com.azureyjt.smartrest.service;
 
-import com.azureyjt.smartrest.common.model.ApiConfigRequest;
-
 /**
  * Interface of api configuration service.
  */
 public interface ApiConfigService {
-
-    /**
-     * Create new Api configuration.
-     * @param apiConfigRequest Request body instance.
-     * @return Response data in JSON format.
-     */
-    String createApiConfig(ApiConfigRequest apiConfigRequest);
 
 }

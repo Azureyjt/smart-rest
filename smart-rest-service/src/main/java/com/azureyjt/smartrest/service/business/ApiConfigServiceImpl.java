@@ -23,6 +23,7 @@
 
 package com.azureyjt.smartrest.service.business;
 
+import com.azureyjt.smartrest.common.model.ApiConfigRequest;
 import com.azureyjt.smartrest.service.ApiConfigService;
 
 /**

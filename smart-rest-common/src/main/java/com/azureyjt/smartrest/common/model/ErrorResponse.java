@@ -24,7 +24,21 @@
 package com.azureyjt.smartrest.common.model;
 
 /**
- * ApiConfigResponse
+ * Response when status code is 4XX or 5XX.
  */
-public class ApiConfigResponse {
+public class ErrorResponse {
+
+    private String message;
+
+    public ErrorResponse(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

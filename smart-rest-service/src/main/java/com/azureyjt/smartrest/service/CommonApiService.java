@@ -36,7 +36,7 @@ public interface CommonApiService {
      * @param uri Request uri.
      * @return Response body data.
      */
-    String executeGet(String uri) throws NoSuchResourceException;
+    Object executeGet(String uri) throws NoSuchResourceException;
 
     /**
      * Execute POST request.

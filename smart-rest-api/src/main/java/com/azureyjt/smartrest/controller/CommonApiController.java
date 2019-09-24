@@ -23,11 +23,13 @@
 
 package com.azureyjt.smartrest.controller;
 
+import com.azureyjt.smartrest.common.model.ErrorResponse;
 import com.azureyjt.smartrest.service.CommonApiService;
 import com.azureyjt.smartrest.service.exception.NoSuchResourceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -60,15 +62,16 @@ public class CommonApiController {
      * @return Response data in JSON format.
      */
     @GetMapping(path = "*")
-    public String getRequest(HttpServletRequest request,
-                             HttpServletResponse response) {
-        String responseData = null;
+    public ResponseEntity<Object> getRequest(HttpServletRequest request,
+                                             HttpServletResponse response) {
+        String uri = request.getRequestURI();
         try {
-            responseData = commonRestService.executeGet(request.getRequestURI());
+            Object responseData = commonRestService.executeGet(uri);
+            return new ResponseEntity<>(responseData, HttpStatus.OK);
         } catch (NoSuchResourceException e) {
-            response.setStatus(HttpStatus.NOT_FOUND.value());
+            ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
+            return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         }
-        return responseData;
     }
 
     /**
