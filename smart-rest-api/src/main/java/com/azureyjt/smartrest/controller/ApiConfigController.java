@@ -23,13 +23,43 @@
 
 package com.azureyjt.smartrest.controller;
 
+import com.azureyjt.smartrest.common.model.ApiConfigRequest;
+import com.azureyjt.smartrest.service.ApiConfigService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Entry point to create / update / delete api configurations.
  */
 @RestController
+@RequestMapping(path = "/api-config", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ApiConfigController {
 
+    private final ApiConfigService apiConfigService;
+
+    /**
+     * Constructor of ApiConfigController.
+     *
+     * @param apiConfigService ApiConfigService Spring bean.
+     */
+    @Autowired
+    public ApiConfigController(ApiConfigService apiConfigService) {
+        this.apiConfigService = apiConfigService;
+    }
+
+    /**
+     * Create Api configuration.
+     *
+     * @param apiConfigRequest Request body instance.
+     * @return Response in JSON format.
+     */
+    @PostMapping(path = "")
+    public String createApiConfig(@RequestBody ApiConfigRequest apiConfigRequest) {
+        return null;
+    }
 
 }

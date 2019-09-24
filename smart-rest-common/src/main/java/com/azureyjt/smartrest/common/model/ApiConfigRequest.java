@@ -21,20 +21,27 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.service;
-
-import com.azureyjt.smartrest.common.model.ApiConfigRequest;
+package com.azureyjt.smartrest.common.model;
 
 /**
- * Interface of api configuration service.
+ * Request body of Api config API.
  */
-public interface ApiConfigService {
+public class ApiConfigRequest {
 
-    /**
-     * Create new Api configuration.
-     * @param apiConfigRequest Request body instance.
-     * @return Response data in JSON format.
-     */
-    String createApiConfig(ApiConfigRequest apiConfigRequest);
+    private ApiConfig apiConfig;
 
+    public ApiConfigRequest() {
+    }
+
+    public ApiConfigRequest(ApiConfig apiConfig) {
+        this.apiConfig = apiConfig;
+    }
+
+    public ApiConfig getApiConfig() {
+        return apiConfig;
+    }
+
+    public void setApiConfig(ApiConfig apiConfig) {
+        this.apiConfig = apiConfig;
+    }
 }
