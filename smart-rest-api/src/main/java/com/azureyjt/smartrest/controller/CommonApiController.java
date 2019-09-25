@@ -60,7 +60,7 @@ public class CommonApiController {
      * @param request HttpServletRequest.
      * @return Response data in JSON format.
      */
-    @GetMapping(path = "*")
+    @GetMapping(path = "**")
     public ResponseEntity<Object> getRequest(HttpServletRequest request) {
         String uri = request.getRequestURI();
         try {
@@ -79,7 +79,7 @@ public class CommonApiController {
      * @param body Request body data.
      * @return Response data in JSON format.
      */
-    @PostMapping(path = "*")
+    @PostMapping(path = "**")
     public String postRequest(HttpServletRequest request,
                               @RequestBody String body) {
         String responseData = commonRestService.executePost(request.getRequestURI(), body);
@@ -94,7 +94,7 @@ public class CommonApiController {
      * @param body Request body data.
      * @return Response data in JSON format.
      */
-    @PutMapping(path = "*")
+    @PutMapping(path = "**")
     public String putRequest(HttpServletRequest request,
                              HttpServletResponse response,
                              @RequestBody String body) {
@@ -108,7 +108,7 @@ public class CommonApiController {
      * @param response HttpServletResponse.
      * @return Response data in JSON format.
      */
-    @DeleteMapping(path = "*")
+    @DeleteMapping(path = "**")
     public String deleteRequest(HttpServletRequest request,
                                 HttpServletResponse response) {
         String responseData = commonRestService.executeDelete(request.getRequestURI());
