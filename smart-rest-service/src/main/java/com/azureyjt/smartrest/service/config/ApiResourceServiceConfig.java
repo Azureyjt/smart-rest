@@ -23,20 +23,32 @@
 
 package com.azureyjt.smartrest.service.config;
 
-import com.azureyjt.smartrest.service.ApiConfigService;
-import com.azureyjt.smartrest.service.business.ApiConfigServiceImpl;
+import com.azureyjt.smartrest.service.ApiResourceService;
+import com.azureyjt.smartrest.service.business.ApiResourceServiceImpl;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Generate Spring bean for ApiConfigService.
+ * Generate Spring bean for ApiResourceService.
  */
 @Configuration
-public class ApiConfigServiceConfig {
+@EnableConfigurationProperties(CacheProperties.class)
+public class ApiResourceServiceConfig {
 
+    /**
+     * Generate ApiResourceService Spring bean.
+     *
+     * @param cacheManager CacheManager bean.
+     * @param cacheProperties CacheProperties bean.
+     * @return ApiResourceService bean.
+     */
     @Bean
-    public ApiConfigService createApiConfigService() {
-        return new ApiConfigServiceImpl();
+    public ApiResourceService createApiConfigService(
+            CacheManager cacheManager,
+            CacheProperties cacheProperties) {
+        return new ApiResourceServiceImpl(cacheManager, cacheProperties);
     }
 
 }

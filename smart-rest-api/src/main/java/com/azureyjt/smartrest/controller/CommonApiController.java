@@ -58,12 +58,10 @@ public class CommonApiController {
      * Filter GET request.
      *
      * @param request HttpServletRequest.
-     * @param response HttpServletResponse
      * @return Response data in JSON format.
      */
     @GetMapping(path = "*")
-    public ResponseEntity<Object> getRequest(HttpServletRequest request,
-                                             HttpServletResponse response) {
+    public ResponseEntity<Object> getRequest(HttpServletRequest request) {
         String uri = request.getRequestURI();
         try {
             Object responseData = commonRestService.executeGet(uri);
@@ -78,13 +76,11 @@ public class CommonApiController {
      * Filter POST request.
      *
      * @param request HttpServletRequest.
-     * @param response HttpServletResponse.
      * @param body Request body data.
      * @return Response data in JSON format.
      */
     @PostMapping(path = "*")
     public String postRequest(HttpServletRequest request,
-                              HttpServletResponse response,
                               @RequestBody String body) {
         String responseData = commonRestService.executePost(request.getRequestURI(), body);
         return responseData;

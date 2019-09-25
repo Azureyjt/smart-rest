@@ -53,10 +53,10 @@ public class UrlUtils {
     public static String getBaseUri(final String uri) {
         String result = uri;
         if (!isBaseUri(result)) {
-            result = StringUtils.strip(result, "/");
-            result = StringUtils.strip(result, "/" + getIdentity(result));
+            result = StringUtils.stripEnd(result, "/");
+            result = StringUtils.stripEnd(result, "/" + getIdentity(result));
         } else {
-            result = StringUtils.strip(result, "/");
+            result = StringUtils.stripEnd(result, "/");
         }
         return result;
     }

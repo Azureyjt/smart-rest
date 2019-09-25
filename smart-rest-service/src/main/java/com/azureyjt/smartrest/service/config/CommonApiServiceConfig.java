@@ -40,7 +40,9 @@ public class CommonApiServiceConfig {
     /**
      * Generate CommonApiServiceImpl bean.
      *
-     * @param commonDao CommonDao bean. Injected by Spring Java Config.
+     * @param commonDao CommonDao bean.
+     * @param cacheManager CacheManager bean.
+     * @param cacheProperties CachePropeties bean.
      * @return CommonApiServiceImpl Spring bean.
      */
     @Bean

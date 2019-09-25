@@ -23,19 +23,23 @@
 
 package com.azureyjt.smartrest.service.business;
 
-import com.azureyjt.smartrest.common.model.ApiConfig;
+import com.azureyjt.smartrest.common.model.ApiResource;
 import com.azureyjt.smartrest.common.utility.JsonUtils;
 import com.azureyjt.smartrest.common.utility.UrlUtils;
 import com.azureyjt.smartrest.dao.CommonDao;
 import com.azureyjt.smartrest.service.CommonApiService;
 import com.azureyjt.smartrest.service.config.CacheProperties;
 import com.azureyjt.smartrest.service.exception.NoSuchResourceException;
+import com.hazelcast.config.MapConfig;
+import com.hazelcast.core.IMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * CommonApiService implementation class.
@@ -115,7 +119,7 @@ public class CommonApiServiceImpl implements CommonApiService {
      * @return Response body data.
      */
     private List<Map<String, Object>> executeGetAll(String uri) throws NoSuchResourceException {
-        ApiConfig apiConfig = getApiConfig(uri);
+        ApiResource apiConfig = getApiConfig(uri);
         if (apiConfig == null) {
             throw new NoSuchResourceException();
         }
@@ -131,7 +135,7 @@ public class CommonApiServiceImpl implements CommonApiService {
      * @return Response body data.
      */
     private Map<String, Object> executeGetById(String uri) throws NoSuchResourceException {
-        ApiConfig apiConfig = getApiConfig(uri);
+        ApiResource apiConfig = getApiConfig(uri);
         if (apiConfig == null) {
             throw new NoSuchResourceException();
         }
@@ -145,12 +149,13 @@ public class CommonApiServiceImpl implements CommonApiService {
      * Get pre-configured api setting from cache.
      *
      * @param uri Request uri.
-     * @return ApiConfig.
+     * @return ApiResource.
      */
-    private ApiConfig getApiConfig(String uri) {
+    private ApiResource getApiConfig(String uri) {
         Cache cache = cacheManager.getCache(cacheProperties.getApiMapName());
         String baseUri = UrlUtils.getBaseUri(uri);
-        ApiConfig apiConfig = (ApiConfig) cache.get(baseUri);
+        String apiResourceJson = cache.get(baseUri).get().toString();
+        ApiResource apiConfig = (ApiResource) JsonUtils.fromJson(apiResourceJson, ApiResource.class);
         return apiConfig;
     }
 }

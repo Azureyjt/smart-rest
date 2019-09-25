@@ -28,7 +28,8 @@ package com.azureyjt.smartrest.service.exception;
  */
 public enum ExceptionMessage {
 
-    NO_SUCH_RESOURCE("No such resource defined !");
+    NO_SUCH_RESOURCE("No such resource defined!"),
+    RESOURCE_ALREADY_EXISTS("Resource already exists! Use PUT method if you want to update the resource.");
 
     private String message;
 

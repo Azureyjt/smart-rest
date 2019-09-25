@@ -23,43 +23,53 @@
 
 package com.azureyjt.smartrest.controller;
 
-import com.azureyjt.smartrest.common.model.ApiConfigRequest;
-import com.azureyjt.smartrest.service.ApiConfigService;
+import com.azureyjt.smartrest.common.model.ApiResource;
+import com.azureyjt.smartrest.common.model.ErrorResponse;
+import com.azureyjt.smartrest.service.ApiResourceService;
+import com.azureyjt.smartrest.service.exception.ResourceAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Entry point to create / update / delete api configurations.
+ * Entry point to create / update / delete API resource.
  */
 @RestController
-@RequestMapping(path = "/api-config", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ApiConfigController {
+@RequestMapping(path = "/resource", produces = MediaType.APPLICATION_JSON_VALUE)
+public class ApiResourceController {
 
-    private final ApiConfigService apiConfigService;
+    private final ApiResourceService apiResourceService;
 
     /**
-     * Constructor of ApiConfigController.
+     * Constructor of ApiResourceController.
      *
-     * @param apiConfigService ApiConfigService Spring bean.
+     * @param apiResourceService ApiResourceService Spring bean.
      */
     @Autowired
-    public ApiConfigController(ApiConfigService apiConfigService) {
-        this.apiConfigService = apiConfigService;
+    public ApiResourceController(ApiResourceService apiResourceService) {
+        this.apiResourceService = apiResourceService;
     }
 
     /**
-     * Create Api configuration.
+     * Create Api resource.
      *
-     * @param apiConfigRequest Request body instance.
+     * @param apiResource Request body. Api resource configuration that need to be
+     *                    created.
      * @return Response in JSON format.
      */
     @PostMapping(path = "")
-    public String createApiConfig(@RequestBody ApiConfigRequest apiConfigRequest) {
-        return null;
+    public ResponseEntity<Object> createApiResource(@RequestBody ApiResource apiResource) {
+        try {
+            apiResourceService.createApiConfig(apiResource);
+            return new ResponseEntity<>(apiResource, HttpStatus.CREATED);
+        } catch (ResourceAlreadyExistsException e) {
+            ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
+            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
 }

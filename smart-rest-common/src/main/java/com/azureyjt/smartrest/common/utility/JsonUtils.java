@@ -25,22 +25,21 @@ package com.azureyjt.smartrest.common.utility;
 
 import com.google.gson.Gson;
 
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Type;
 
 /**
  * Serialization and deserialization opertaions between JSON and Object.
  */
 public class JsonUtils {
 
-    public static String toJson(Map map) {
+    public static Object fromJson(String json, Type clazz) {
         Gson gson = new Gson();
-        return gson.toJson(map);
+        return gson.fromJson(json, clazz);
     }
 
-    public static String toJson(List list) {
+    public static String toJson(Object obj) {
         Gson gson = new Gson();
-        return gson.toJson(list);
+        return gson.toJson(obj);
     }
 
 }

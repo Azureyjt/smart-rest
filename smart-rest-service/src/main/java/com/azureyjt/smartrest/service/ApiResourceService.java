@@ -21,27 +21,20 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.common.model;
+package com.azureyjt.smartrest.service;
+
+import com.azureyjt.smartrest.common.model.ApiResource;
+import com.azureyjt.smartrest.service.exception.ResourceAlreadyExistsException;
 
 /**
- * Request body of Api config API.
+ * Interface of Api resource service.
  */
-public class ApiConfigRequest {
+public interface ApiResourceService {
 
-    private ApiConfig apiConfig;
+    /**
+     * Create new REST API resource according to the
+     * @param apiResource Api resource entity that need to be created.
+     */
+    void createApiConfig(ApiResource apiResource) throws ResourceAlreadyExistsException;
 
-    public ApiConfigRequest() {
-    }
-
-    public ApiConfigRequest(ApiConfig apiConfig) {
-        this.apiConfig = apiConfig;
-    }
-
-    public ApiConfig getApiConfig() {
-        return apiConfig;
-    }
-
-    public void setApiConfig(ApiConfig apiConfig) {
-        this.apiConfig = apiConfig;
-    }
 }

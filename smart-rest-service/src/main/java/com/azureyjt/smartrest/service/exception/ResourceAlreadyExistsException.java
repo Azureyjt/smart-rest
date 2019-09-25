@@ -21,10 +21,14 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.common.model;
+package com.azureyjt.smartrest.service.exception;
 
 /**
- * ApiConfigResponse
+ * This exception is thrown when the provided api resource is already created.
  */
-public class ApiConfigResponse {
+public class ResourceAlreadyExistsException extends Exception {
+
+    public ResourceAlreadyExistsException() {
+        super(ExceptionMessage.RESOURCE_ALREADY_EXISTS.getMessage());
+    }
 }

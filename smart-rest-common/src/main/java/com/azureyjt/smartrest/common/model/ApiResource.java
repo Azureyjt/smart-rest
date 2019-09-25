@@ -23,13 +23,16 @@
 
 package com.azureyjt.smartrest.common.model;
 
+import com.google.gson.Gson;
+
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 /**
  * Data model of the customized REST API.
  */
-public class ApiConfig {
+public class ApiResource {
 
     private String apiUri;
 
@@ -40,15 +43,15 @@ public class ApiConfig {
     private Map<String, String> attributeMapping;
 
     /**
-     * Constructor of ApiConfig.
+     * Constructor of ApiResource.
      */
-    public ApiConfig() {
+    public ApiResource() {
     }
 
     /**
-     * Constructor of ApiConfig with fields.
+     * Constructor of ApiResource with fields.
      */
-    public ApiConfig(
+    public ApiResource(
             String apiUri,
             String tableName,
             String idColumnName,
@@ -73,7 +76,7 @@ public class ApiConfig {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ApiConfig that = (ApiConfig) o;
+        ApiResource that = (ApiResource) o;
         return Objects.equals(apiUri, that.apiUri)
                 && Objects.equals(tableName, that.tableName)
                 && Objects.equals(idColumnName, that.idColumnName)
