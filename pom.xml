@@ -42,7 +42,7 @@
         <module>smart-rest-dao</module>
         <module>smart-rest-ui</module>
         <module>smart-rest-service</module>
-        <module>smart-rest-executable</module>
+        <module>smart-rest-app</module>
         <module>smart-rest-aop</module>
         <module>smart-rest-cache</module>
     </modules>

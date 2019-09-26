@@ -1,0 +1,14 @@
+server:
+  port: 8089
+  servlet:
+    contextPath: /
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+
