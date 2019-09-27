@@ -1,4 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
 <!doctype html>
 <html lang="en">
@@ -38,12 +43,12 @@
 				</div>
 				<form class="navbar-form navbar-left">
 					<div class="input-group">
-						<input type="text" value="" class="form-control" placeholder="Search dashboard...">
+						<input type="text" value="" class="form-control" placeholder="Search...">
 						<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
 					</div>
 				</form>
 				<div class="navbar-btn navbar-btn-right">
-					<a class="btn btn-success update-pro" href="#" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span> sign out</span></a>
+					<a class="btn btn-success update-pro" href="#" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>Sign out</span></a>
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
@@ -98,26 +103,28 @@
 				<div class="container-fluid">
 					<h3 class="page-title">Create New REST API Resource</h3>
 					<div class="row">
-						<div class="col-md-11">
+						<div class="col-md-12">
 							<div class="panel">
                                 <div class="panel-body">
-                                    <div class="col-md-6">
-                                        <h4>Resouse Base URI: </h4>
-                                        <input class="form-control input-lg" type="text">
-                                        <br>
-                                        <h4>DB Table Name: </h4>
-                                        <input class="form-control input-lg" type="text">
-                                        <br>
-                                        <h4>ID Column Name: </h4>
-                                        <input class="form-control input-lg" type="text">
-                                        <br>
-                                        <br>
-                                        <br>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4>Attribute Mapping: </h4>
-                                        <textarea class="form-control" rows="4"></textarea>
-                                    </div>
+                                    <form action="<%=basePath%>api-config/" method="post">
+                                        <div class="col-md-6">
+                                            <h4>Resouse Base URI: </h4>
+                                            <input class="form-control input-lg" type="text">
+                                            <br>
+                                            <h4>DB Table Name: </h4>
+                                            <input class="form-control input-lg" type="text">
+                                            <br>
+                                            <h4>ID Column Name: </h4>
+                                            <input class="form-control input-lg" type="text">
+                                            <br><br>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Attribute Mapping: </h4>
+                                            <textarea class="form-control" rows="9"></textarea>
+                                            <br><br>
+                                            <input type="submit" id="sub" value="Create" class="btn btn-primary" style="position: absolute;right: 18px;font-size: 15px"/>
+                                        </div>
+                                    </form>
                                 </div>
 							</div>
 						</div>

@@ -21,28 +21,13 @@
  * THE SOFTWARE.
  */
 
-package com.azureyjt.smartrest.ui.controller;
-
-import com.azureyjt.smartrest.ui.config.JspConfig;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+package com.azureyjt.smartrest.ui.config;
 
 /**
- * Index controller.
+ * JSP configuration.
  */
-@RestController
-public class IndexController {
+public class JspConfig {
 
-    /**
-     * Index controller.
-     *
-     * @return Controller view.
-     */
-    @GetMapping(path = "/index")
-    public ModelAndView getIndexView() {
-        ModelAndView view = new ModelAndView(JspConfig.INDEX_JSP_NAME);
-        return view;
-    }
+    public static final String INDEX_JSP_NAME = "index";
 
 }

@@ -23,26 +23,20 @@
 
 package com.azureyjt.smartrest.ui.controller;
 
-import com.azureyjt.smartrest.ui.config.JspConfig;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Index controller.
+ * REST API configuration controller.
  */
 @RestController
-public class IndexController {
+public class ApiConfigController {
 
     /**
-     * Index controller.
-     *
-     * @return Controller view.
+     * REST API configuration creation controller.
      */
-    @GetMapping(path = "/index")
-    public ModelAndView getIndexView() {
-        ModelAndView view = new ModelAndView(JspConfig.INDEX_JSP_NAME);
-        return view;
+    @PostMapping(path = "/api-config")
+    public String createApiConfig() {
+        return null;
     }
-
 }
