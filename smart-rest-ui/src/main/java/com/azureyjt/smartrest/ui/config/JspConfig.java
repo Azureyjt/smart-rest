@@ -28,6 +28,6 @@ package com.azureyjt.smartrest.ui.config;
  */
 public class JspConfig {
 
-    public static final String INDEX_JSP_NAME = "index";
+    public static final String INDEX_JSP_NAME = "Index";
 
 }
